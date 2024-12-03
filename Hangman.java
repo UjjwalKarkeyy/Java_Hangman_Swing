@@ -12,8 +12,8 @@ public class Hangman
         // Create JFrame class object and providing basic layout
         String titleText = "Hangman";
         JFrame frame = new JFrame();
-        frame.setUndecorated(true); // Remove default title bar
         frame.setLayout(null);
+        frame.setUndecorated(true); // Remove default title bar and border
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
@@ -89,7 +89,7 @@ public class Hangman
             frame.add(l[i]);
         }
 
-        frame.add(titlePanel, BorderLayout.NORTH);
+        frame.add(titlePanel, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
