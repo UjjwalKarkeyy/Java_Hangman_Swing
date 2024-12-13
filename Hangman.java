@@ -1,6 +1,7 @@
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class Hangman 
 {
@@ -10,115 +11,127 @@ public class Hangman
         Hangman h1 = new Hangman();
 
         // Create JFrame class object and providing basic layout
-        String titleText = "Hangman";
-        JFrame frame = new JFrame(titleText);
-        frame.setLayout(null);
+        JFrame frame = new JFrame();
         frame.setLayout(new BorderLayout());
         frame.setUndecorated(true); // Remove default title bar and border
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
-        frame.getContentPane().setBackground(new Color(30,30,30));
-
+        frame.getContentPane().setBackground(new Color(250,250,250));
+        
         /*
             CREATING CUSTOM TITLEPANEL
+            CREATING TITLE LABEL TO ADD TO TITLE PANEL
         */
-
-        JPanel titlePanel = new JPanel();
         
-        // Flow layout basically helps to deal with the x-axis i.e., the row. It works in a way that if a whole row is occupied then it will simply flow to the next row.
-        titlePanel.setLayout(new FlowLayout(FlowLayout.LEFT)); 
+        String titleText = "Hangman";
+        JPanel titlePanel = new JPanel(new BorderLayout());
         titlePanel.setBackground(Color.WHITE);
         
-        /*
-            Creating TITLEPANEL label and adding it to the title panel
-        */        
-
-        JLabel title = new JLabel();
-        title.setText(titleText);
-        title.setFont(new Font("Arial", Font.BOLD, 18));
-        title.setForeground(Color.BLACK);
-        titlePanel.add(title);
+        // Creating lable for title of panel
+        JLabel titleLabel = new JLabel(titleText);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        titlePanel.add(titleLabel, BorderLayout.WEST);
 
         /*
             IMAGES ARE LOADED HERE 
         */
 
-        ImageIcon mini = new ImageIcon("Icon_Images/minimize_icon.png");
-        ImageIcon close = new ImageIcon("Icon_Images/close_icon.png");
+        ImageIcon mini_icon = new ImageIcon("Icon_Images/minimize_icon.png");
+        ImageIcon close_icon = new ImageIcon("Icon_Images/cross_icon.png");
 
         /*
             RESIZING THE IMAGES LOADED 
         */
 
-        Image temp_mini = mini.getImage();
-        Image temp_close = close.getImage();
+        Image temp_mini = mini_icon.getImage();
+        Image temp_close = close_icon.getImage();
 
         Image re_mini = temp_mini.getScaledInstance(17, 17, 0);
-        Image re_close = temp_close.getScaledInstance(25, 25, 0);
+        Image re_close = temp_close.getScaledInstance(17, 17, 0);
 
-        ImageIcon mini_icon = new ImageIcon(re_mini); 
-        ImageIcon close_icon = new ImageIcon(re_close); 
+        mini_icon = new ImageIcon(re_mini); 
+        close_icon = new ImageIcon(re_close); 
 
 
         /*
-            BUTTONS START HERE 
-        */
-
-        // Initializing button numbers
-        int buttonNumbers = 4;
-
-        // Initializing JButton class array object
-        JButton[] b = new JButton[buttonNumbers];
-
-        // Creating play button
-        b[0] = new JButton("Play");
-        b[0].setBackground(new Color(0,95,115));
-        b[0].setForeground(Color.WHITE);
-        b[0].setBounds(345,250,64,30);
-        
-        // Creating host button
-        b[1] = new JButton("Host");
-        b[1].setBackground(new Color(0,95,115));
-        b[1].setForeground(Color.WHITE);
-        b[1].setBounds(342,210,70,30);
+            CREATING AND ADDITNG NAV ICON BUTTON TO TITLE PANEL
+         */
 
         // Creating minimize button
-        b[2] = new JButton(mini_icon);
-        b[2].setBounds(342,0,70,30);
-
+        JButton min_button = new JButton(mini_icon);
+        min_button.setSize(70,30);
+        min_button.setBorder(null);
+        
         // Creating cross button
-        b[3] = new JButton(close_icon);
-        b[3].setBounds(442,0,100,50);
+        JButton close_button = new JButton(close_icon);
+        min_button.setSize(70,30);
+        close_button.setBorder(null);
 
         /*
-            LABELS START HERE 
+            ADDING BUTTONS TO A NEW PANEL SO THEY DON'T OVERLAP
+            THEN ADDING TAHT PANEL TO TITLE PANEL
+        */ 
+
+        JPanel buttoPanel = new JPanel();
+        // buttoPanel.setLayout(BorderLayout.NORTH);
+        buttoPanel.add(min_button);
+        buttoPanel.add(close_button);
+        titlePanel.add(buttoPanel, BorderLayout.EAST);
+
+        /*
+            CREATING THE MAIN PANEL FOR WELCOME TEXT AND HOST, PLAY BUTTONS
         */
 
-        int labelNumbers = 1;
-        JLabel[] l = new JLabel[labelNumbers];
+        JPanel main = new JPanel();
+        main.setLayout(new BorderLayout());
 
-        l[0] = new JLabel();
-        l[0].setText("Welcome to Hangman!");
-        l[0].setBounds(236, 100, 500, 30);
-        l[0].setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+            /*
+                BUTTONS START HERE 
+            */
+
+            // Initializing button numbers
+            int buttonNumbers = 2;
+
+            // Initializing JButton class array object
+            JButton[] b = new JButton[buttonNumbers];
+
+            // Creating play button
+            b[0] = new JButton("Play");
+            b[0].setBackground(new Color(0,95,115));
+            b[0].setForeground(Color.WHITE);
+
+            // Creating host button
+            b[1] = new JButton("Host");
+            b[1].setBackground(new Color(0,95,115));
+            b[1].setForeground(Color.WHITE);
+
+            /*
+                LABELS START HERE 
+            */
+
+            int labelNumbers = 1;
+            JLabel[] l = new JLabel[labelNumbers];
+
+            l[0] = new JLabel();
+            l[0].setText("Welcome to Hangman!");
+            l[0].setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 
         /*
             AUTOMATICALLY ADDING  
         */
 
-        // Automatically adding every buttons to the frame
+        // Automatically adding every buttons to the main panel
         for(int i = 0; i < buttonNumbers; i++)
         {
-            frame.add(b[i]);
+            main.add(b[i], BorderLayout.CENTER);
         }
         
-        // Automatically adding every labels to the frame
+        // Automatically adding every labels to the main panel
         for(int i = 0; i < labelNumbers; i++)
         {
-            frame.add(l[i]);
+            main.add(l[i], BorderLayout.CENTER);
         }
-
+        frame.add(main, BorderLayout.CENTER);
         frame.add(titlePanel, BorderLayout.NORTH);
 
         frame.setVisible(true);
