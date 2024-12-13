@@ -89,7 +89,7 @@ public class Hangman
                 BUTTONS START HERE 
             */
             JPanel buttonPanel = new JPanel();
-
+            
             // Creating play button
             JButton PlayButton = new JButton("Play");
             PlayButton.setBackground(new Color(0,95,115));
@@ -108,9 +108,14 @@ public class Hangman
                 LABELS START HERE 
             */
 
-            JLabel welcomeLabel = new JLabel();
-            welcomeLabel.setText("Welcome to Hangman!");
+            // Creating welcomePanel for welcome label
+            JPanel welcomePanel = new JPanel();
+            JLabel welcomeLabel = new JLabel("Welcome to Hangman!",SwingConstants.CENTER);
             welcomeLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+
+            // Adding welcome label to welcome panel
+            welcomePanel.add(welcomeLabel);
+
 
         // Adding to main panel here
         main.add(welcomeLabel, BorderLayout.NORTH);
