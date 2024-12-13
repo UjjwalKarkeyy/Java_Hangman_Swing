@@ -88,51 +88,37 @@ public class Hangman
             /*
                 BUTTONS START HERE 
             */
-
-            // Initializing button numbers
-            int buttonNumbers = 2;
-
-            // Initializing JButton class array object
-            JButton[] b = new JButton[buttonNumbers];
+            JPanel buttonPanel = new JPanel();
 
             // Creating play button
-            b[0] = new JButton("Play");
-            b[0].setBackground(new Color(0,95,115));
-            b[0].setForeground(Color.WHITE);
+            JButton PlayButton = new JButton("Play");
+            PlayButton.setBackground(new Color(0,95,115));
+            PlayButton.setForeground(Color.WHITE);
 
             // Creating host button
-            b[1] = new JButton("Host");
-            b[1].setBackground(new Color(0,95,115));
-            b[1].setForeground(Color.WHITE);
+            JButton HostButton = new JButton("Host");
+            HostButton.setBackground(new Color(0,95,115));
+            HostButton.setForeground(Color.WHITE);
+
+            // Adding HOST and Play buttons to buttonPanel
+            buttonPanel.add(PlayButton);
+            buttonPanel.add(HostButton);
 
             /*
                 LABELS START HERE 
             */
 
-            int labelNumbers = 1;
-            JLabel[] l = new JLabel[labelNumbers];
+            JLabel welcomeLabel = new JLabel();
+            welcomeLabel.setText("Welcome to Hangman!");
+            welcomeLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 
-            l[0] = new JLabel();
-            l[0].setText("Welcome to Hangman!");
-            l[0].setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+        // Adding to main panel here
+        main.add(welcomeLabel, BorderLayout.NORTH);
+        main.add(buttonPanel, BorderLayout.CENTER);
 
-        /*
-            AUTOMATICALLY ADDING  
-        */
-
-        // Automatically adding every buttons to the main panel
-        for(int i = 0; i < buttonNumbers; i++)
-        {
-            main.add(b[i], BorderLayout.CENTER);
-        }
-        
-        // Automatically adding every labels to the main panel
-        for(int i = 0; i < labelNumbers; i++)
-        {
-            main.add(l[i], BorderLayout.CENTER);
-        }
-        frame.add(main, BorderLayout.CENTER);
+        // Adding to frame panel here
         frame.add(titlePanel, BorderLayout.NORTH);
+        frame.add(main, BorderLayout.CENTER);
 
         frame.setVisible(true);
     }
