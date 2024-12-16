@@ -1,10 +1,17 @@
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
 public class Hangman 
 {
+
+    public static void makeWindowDraggable()
+    {
+        
+    }
+
     public static void main(String[] args) 
     {
         // Creating Hangman class object
@@ -144,6 +151,24 @@ public class Hangman
             notePanel.add(Box.createVerticalStrut(3));
             notePanel.add(play_note_label);
             notePanel.add(host_note_label);
+
+        /*
+            ADDING EVENT LISTENER FOR MINIMIZING AND CLOSING SCREEN 
+        */
+
+        close_button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                
+                System.exit(0);            
+            }
+        });
+
+        min_button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                
+                frame.setExtendedState(JFrame.ICONIFIED);           
+            }
+        });
 
         // Adding to main panel here
         main.add(welcomePanel, BorderLayout.NORTH);
