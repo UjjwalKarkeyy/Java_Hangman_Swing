@@ -38,6 +38,7 @@ public class Hangman
 
         ImageIcon mini_icon = new ImageIcon("Icon_Images/minimize_icon.png");
         ImageIcon close_icon = new ImageIcon("Icon_Images/cross_icon.png");
+        ImageIcon hangman_picture = new ImageIcon("Icon_Images/hangman.png");
 
         /*
             RESIZING THE IMAGES LOADED 
@@ -45,13 +46,15 @@ public class Hangman
 
         Image temp_mini = mini_icon.getImage();
         Image temp_close = close_icon.getImage();
+        Image temp_hangman_pic = hangman_picture.getImage();
 
         Image re_mini = temp_mini.getScaledInstance(17, 17, 0);
         Image re_close = temp_close.getScaledInstance(17, 17, 0);
+        Image re_hangman_pic = temp_hangman_pic.getScaledInstance(17, 17, 0);
 
         mini_icon = new ImageIcon(re_mini); 
         close_icon = new ImageIcon(re_close); 
-
+        hangman_picture = new ImageIcon(re_hangman_pic); 
 
         /*
             CREATING AND ADDITNG NAV ICON BUTTON TO TITLE PANEL
