@@ -182,7 +182,7 @@ public class Hangman
         titlePanel.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 
-                mouseClickedPos.setLocation(e.getX(),e.getY());
+                mouseClickedPos.setLocation(e.getLocationOnScreen());
         }});
 
         /* 
@@ -191,10 +191,12 @@ public class Hangman
         */
         titlePanel.addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
-                int x = e.getX();
-                int y = e.getY();
+                
+                Point currentMousePoint = e.getLocationOnScreen();
+                final Point diffPos;
+                diffPos.x = mouse; 
 
-                int xNewPos = x - mouseClickedPos.x;
+                int xNewPos = currentMousePoint.x - (mouseClickedPos.x - frame.getX());
                 int yNewPos = y - mouseClickedPos.y;
 
                 frame.setLocation(xNewPos,yNewPos);
