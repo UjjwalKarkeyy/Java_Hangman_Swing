@@ -203,6 +203,21 @@ public class Hangman
                 frame.setLocation(xNewPos,yNewPos);
         }});
 
+        PlayButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Creating a new panel
+                JPanel newPanel = new JPanel();
+                newPanel.add(new JLabel("This is the new page!"));
+        
+                // Replacing the current content pane with the new panel
+                frame.setContentPane(newPanel);
+        
+                // Refreshing the frame
+                frame.revalidate();
+                frame.repaint();
+            }
+        });
+
         frame.setVisible(true);
     }
 }
