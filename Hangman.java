@@ -2,18 +2,13 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
 public class Hangman 
 {
-
-    public static void makeWindowDraggable()
-    {
-        
-    }
-
     public static void main(String[] args) 
     {
         // Creating Hangman class object
@@ -182,13 +177,27 @@ public class Hangman
         frame.add(main, BorderLayout.CENTER);
 
         /* GETTING MOUSE POSITION WHEN ITS CLICKED */
+        final Point mouseClickedPos = new Point();
 
         titlePanel.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 
+                mouseClickedPos.setLocation(e.getX(),e.getY());
+        }});
+
+        /* 
+            GETTING MOUSE POSITION WHEN ITS BEEN DRAGGED 
+            AND SETTING THE NEW POSITION FOR FRAME
+        */
+        titlePanel.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent e) {
                 int x = e.getX();
                 int y = e.getY();
-                System.out.println("Position of mouse is: "+ x + ","+ y);
+
+                int xNewPos = x - mouseClickedPos.x;
+                int yNewPos = y - mouseClickedPos.y;
+
+                frame.setLocation(xNewPos,yNewPos);
         }});
 
         frame.setVisible(true);
