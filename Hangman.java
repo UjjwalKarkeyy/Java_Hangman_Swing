@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
@@ -178,6 +180,16 @@ public class Hangman
         // Adding to frame panel here
         frame.add(titlePanel, BorderLayout.NORTH);
         frame.add(main, BorderLayout.CENTER);
+
+        /* GETTING MOUSE POSITION WHEN ITS CLICKED */
+
+        titlePanel.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                
+                int x = e.getX();
+                int y = e.getY();
+                System.out.println("Position of mouse is: "+ x + ","+ y);
+        }});
 
         frame.setVisible(true);
     }
