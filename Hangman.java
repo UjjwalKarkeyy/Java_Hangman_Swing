@@ -178,11 +178,14 @@ public class Hangman
 
         /* GETTING MOUSE POSITION WHEN ITS CLICKED */
         final Point mouseClickedPos = new Point();
+        final Point diffPos = new Point();
 
         titlePanel.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 
                 mouseClickedPos.setLocation(e.getLocationOnScreen());
+                diffPos.x = mouseClickedPos.x - frame.getX(); 
+                diffPos.y = mouseClickedPos.y - frame.getY(); 
         }});
 
         /* 
@@ -193,11 +196,9 @@ public class Hangman
             public void mouseDragged(MouseEvent e) {
                 
                 Point currentMousePoint = e.getLocationOnScreen();
-                final Point diffPos;
-                diffPos.x = mouse; 
 
-                int xNewPos = currentMousePoint.x - (mouseClickedPos.x - frame.getX());
-                int yNewPos = y - mouseClickedPos.y;
+                int xNewPos = currentMousePoint.x - diffPos.x;
+                int yNewPos = currentMousePoint.y - diffPos.y;
 
                 frame.setLocation(xNewPos,yNewPos);
         }});
