@@ -9,8 +9,6 @@ import javax.swing.*;
 
 public class Hangman 
 {
-
-    
     public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel)
     {
         frame.getContentPane().removeAll();
