@@ -145,9 +145,9 @@ public class Hangman
             JPanel buttonPlayPanel = new JPanel();
 
             // Creating Next Game button
-            JButton NextGame = new JButton("Next Game");
-            NextGame.setBackground(new Color(0,95,115));
-            NextGame.setForeground(Color.WHITE);
+            JButton NewGame = new JButton("Next Game");
+            NewGame.setBackground(new Color(0,95,115));
+            NewGame.setForeground(Color.WHITE);
             
             // Creating Exit button
             JButton ExitButton1 = new JButton("Exit");
@@ -155,7 +155,7 @@ public class Hangman
             ExitButton1.setForeground(Color.WHITE);
             
             // Adding Next Game and Exit buttons to buttonNewPanel
-            buttonPlayPanel.add(NextGame);
+            buttonPlayPanel.add(NewGame);
             buttonPlayPanel.add(ExitButton1); 
 
             
@@ -293,12 +293,12 @@ public class Hangman
 
         Next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                h1.CreateNewPanel(frame, titlePanel, buttonPanel);
         }});
 
-        NextGame.addActionListener(new ActionListener() {
+        NewGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+
         }});
 
         frame.setVisible(true);
