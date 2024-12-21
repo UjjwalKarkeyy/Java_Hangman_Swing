@@ -40,6 +40,25 @@ public class Hangman
         frame.revalidate();
         frame.repaint();
     }
+
+    public void CreateNewPanel(JFrame frame, JPanel titlePanel, JButton PlayButton, JButton NewGame)
+    {
+        frame.getContentPane().removeAll();
+        JButton buttonPanel = new JButton();
+
+        JPanel newPanel = new JPanel();
+        newPanel.setLayout(new BorderLayout());
+
+        buttonPanel.add(NewGame);
+        buttonPanel.add(PlayButton);
+        newPanel.add(buttonPanel, BorderLayout.CENTER);
+
+        frame.add(titlePanel, BorderLayout.NORTH);
+
+        // Refreshing the frame
+        frame.revalidate();
+        frame.repaint();
+    }
     public static void main(String[] args) 
     {
         // Creating Hangman class object
@@ -145,9 +164,13 @@ public class Hangman
             JPanel buttonPlayPanel = new JPanel();
 
             // Creating Next Game button
-            JButton NewGame = new JButton("Next Game");
-            NewGame.setBackground(new Color(0,95,115));
-            NewGame.setForeground(Color.WHITE);
+            JButton NewGame1 = new JButton("Next Game");
+            NewGame1.setBackground(new Color(0,95,115));
+            NewGame1.setForeground(Color.WHITE);
+
+            JButton NewGame2 = new JButton("Next Game");
+            NewGame2.setBackground(new Color(0,95,115));
+            NewGame2.setForeground(Color.WHITE);
             
             // Creating Exit button
             JButton ExitButton1 = new JButton("Exit");
@@ -155,10 +178,9 @@ public class Hangman
             ExitButton1.setForeground(Color.WHITE);
             
             // Adding Next Game and Exit buttons to buttonNewPanel
-            buttonPlayPanel.add(NewGame);
+            buttonPlayPanel.add(NewGame1);
             buttonPlayPanel.add(ExitButton1); 
 
-            
             JPanel buttonHostPanel = new JPanel();
 
             // Creating Next Game button
@@ -293,12 +315,18 @@ public class Hangman
 
         Next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                h1.CreateNewPanel(frame, titlePanel, buttonPanel);
+                h1.CreateNewPanel(frame, titlePanel, PlayButton, NewGame2);
+
         }});
 
-        NewGame.addActionListener(new ActionListener() {
+        NewGame1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                h1.CreateNewPanel(frame, titlePanel, buttonPlayPanel);
+        }});
 
+        NewGame2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                h1.CreateNewPanel(frame, titlePanel, buttonHostPanel);
         }});
 
         frame.setVisible(true);
