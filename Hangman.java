@@ -26,6 +26,20 @@ public class Hangman
         frame.revalidate();
         frame.repaint();
     }
+
+    public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel, JPanel main)
+    {
+        frame.getContentPane().removeAll();
+
+        frame.add(main, BorderLayout.CENTER);
+        main.add(buttonPanel, BorderLayout.CENTER);
+
+        frame.add(titlePanel, BorderLayout.NORTH);
+
+        // Refreshing the frame
+        frame.revalidate();
+        frame.repaint();
+    }
     public static void main(String[] args) 
     {
         // Creating Hangman class object
@@ -266,6 +280,16 @@ public class Hangman
                 h1.CreateNewPanel(frame, titlePanel, buttonHostPanel);
             }
         });
+
+        ExitButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                h1.CreateNewPanel(frame, titlePanel, buttonPanel, main);
+        }});
+
+        ExitButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                h1.CreateNewPanel(frame, titlePanel, buttonPanel, main);
+        }});
 
         frame.setVisible(true);
     }
