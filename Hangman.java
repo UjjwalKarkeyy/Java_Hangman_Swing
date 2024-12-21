@@ -9,6 +9,23 @@ import javax.swing.*;
 
 public class Hangman 
 {
+
+    
+    public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel)
+    {
+        frame.getContentPane().removeAll();
+
+        JPanel newPanel = new JPanel();
+        newPanel.setLayout(new BorderLayout());
+        frame.add(newPanel, BorderLayout.CENTER);
+        newPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        frame.add(titlePanel, BorderLayout.NORTH);
+
+        // Refreshing the frame
+        frame.revalidate();
+        frame.repaint();
+    }
     public static void main(String[] args) 
     {
         // Creating Hangman class object
@@ -110,6 +127,39 @@ public class Hangman
             // Adding HOST and Play buttons to buttonPanel
             buttonPanel.add(PlayButton);
             buttonPanel.add(HostButton);
+
+            JPanel buttonPlayPanel = new JPanel();
+
+            // Creating Next Game button
+            JButton NextGame = new JButton("Next Game");
+            NextGame.setBackground(new Color(0,95,115));
+            NextGame.setForeground(Color.WHITE);
+            
+            // Creating Exit button
+            JButton ExitButton1 = new JButton("Exit");
+            ExitButton1.setBackground(new Color(0,95,115));
+            ExitButton1.setForeground(Color.WHITE);
+            
+            // Adding Next Game and Exit buttons to buttonNewPanel
+            buttonPlayPanel.add(NextGame);
+            buttonPlayPanel.add(ExitButton1); 
+
+            
+            JPanel buttonHostPanel = new JPanel();
+
+            // Creating Next Game button
+            JButton Next = new JButton("Next");
+            Next.setBackground(new Color(0,95,115));
+            Next.setForeground(Color.WHITE);
+
+            // Creating Exit button
+            JButton ExitButton2 = new JButton("Exit");
+            ExitButton2.setBackground(new Color(0,95,115));
+            ExitButton2.setForeground(Color.WHITE);
+            
+            // Adding Next Game and Exit buttons to buttonNewPanel
+            buttonHostPanel.add(Next);
+            buttonHostPanel.add(ExitButton2); 
             
             /*
             LABELS START HERE 
@@ -205,77 +255,15 @@ public class Hangman
 
         PlayButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Creating a new panel
-                JPanel newPanel = new JPanel();
-                newPanel.add(new JLabel());
-        
-                // Replacing the current content pane with the new panel
-                frame.getContentPane().removeAll();
 
-                /*
-                    BUTTONS FOR THE NEW PANEL STARTS HERE 
-                */
-
-                JPanel buttonNewPanel = new JPanel();
-
-                // Creating Next Game button
-                JButton NextGame = new JButton("Next Game");
-                NextGame.setBackground(new Color(0,95,115));
-                NextGame.setForeground(Color.WHITE);
-                
-                // Creating Exit button
-                JButton ExitButton = new JButton("Exit");
-                ExitButton.setBackground(new Color(0,95,115));
-                ExitButton.setForeground(Color.WHITE);
-                
-                // Adding Next Game and Exit buttons to buttonNewPanel
-                buttonNewPanel.add(NextGame);
-                buttonNewPanel.add(ExitButton); 
-
-                frame.add(newPanel, BorderLayout.CENTER);
-                newPanel.add(buttonNewPanel, BorderLayout.CENTER);
-
-                frame.add(titlePanel, BorderLayout.NORTH);
-        
-                // Refreshing the frame
-                frame.revalidate();
-                frame.repaint();
+                h1.CreateNewPanel(frame, titlePanel, buttonPlayPanel);
             }
         });
 
         HostButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Creating a new panel
-                JPanel newPanel = new JPanel();
-                newPanel.add(new JLabel());
-        
-                // Replacing the current content pane with the new panel
-                frame.getContentPane().removeAll();
 
-                JPanel buttonNewPanel = new JPanel();
-
-                // Creating Next Game button
-                JButton Next = new JButton("Next");
-                Next.setBackground(new Color(0,95,115));
-                Next.setForeground(Color.WHITE);
-                
-                // Creating Exit button
-                JButton ExitButton = new JButton("Exit");
-                ExitButton.setBackground(new Color(0,95,115));
-                ExitButton.setForeground(Color.WHITE);
-                
-                // Adding Next Game and Exit buttons to buttonNewPanel
-                buttonNewPanel.add(Next);
-                buttonNewPanel.add(ExitButton); 
-
-                frame.add(newPanel, BorderLayout.CENTER);
-                newPanel.add(buttonNewPanel, BorderLayout.CENTER);
-
-                frame.add(titlePanel, BorderLayout.NORTH);
-        
-                // Refreshing the frame
-                frame.revalidate();
-                frame.repaint();
+                h1.CreateNewPanel(frame, titlePanel, buttonHostPanel);
             }
         });
 
