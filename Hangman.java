@@ -291,6 +291,16 @@ public class Hangman
                 h1.CreateNewPanel(frame, titlePanel, buttonPanel, main);
         }});
 
+        Next.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+        }});
+
+        NextGame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                
+        }});
+
         frame.setVisible(true);
     }
 }
