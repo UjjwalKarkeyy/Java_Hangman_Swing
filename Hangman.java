@@ -6,19 +6,29 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class Hangman 
 {
     public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel)
     {
         frame.getContentPane().removeAll();
+        JTextField hostInput = new JTextField();
+        hostInput.setPreferredSize(new Dimension(150,30));
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        inputPanel.add(hostInput);
 
         JPanel newPanel = new JPanel();
         newPanel.setLayout(new BorderLayout());
-        frame.add(newPanel, BorderLayout.CENTER);
-        newPanel.add(buttonPanel, BorderLayout.SOUTH);
 
+        newPanel.add(inputPanel, BorderLayout.NORTH);    
+
+        newPanel.add(buttonPanel, BorderLayout.SOUTH);
         frame.add(titlePanel, BorderLayout.NORTH);
+        frame.add(newPanel, BorderLayout.CENTER);
+
 
         // Refreshing the frame
         frame.revalidate();
@@ -224,6 +234,13 @@ public class Hangman
             notePanel.add(Box.createVerticalStrut(3));
             notePanel.add(play_note_label);
             notePanel.add(host_note_label);
+
+        /*
+            INPUT STARTS HERE 
+        */
+
+        
+
 
         /*
             ADDING EVENT LISTENER FOR MINIMIZING AND CLOSING SCREEN 

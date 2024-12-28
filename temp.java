@@ -1,37 +1,69 @@
+import java.awt.event.*;
 import javax.swing.*;
-import java.awt.*;
 
-public class temp {
+class text extends JFrame implements ActionListener {
+    // JTextField
+    static JTextField t;
 
+    // JFrame
+    static JFrame f;
+
+    // JButton
+    static JButton b;
+
+    // label to display text
+    static JLabel l;
+
+    // default constructor
+    text() {}
+
+    // main class
     public static void main(String[] args) {
-        // Create the frame
-        JFrame frame = new JFrame("Title Panel Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 100);
-        
-        // Use a BorderLayout for the frame's content pane
-        frame.setLayout(new BorderLayout());
+        // create a new frame to store text field and button
+        f = new JFrame("textfield");
 
-        // Create the title panel
-        JPanel titlePanel = new JPanel(new BorderLayout());
-        titlePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5)); // Optional padding
+        // create a label to display text
+        l = new JLabel("nothing entered");
 
-        // Add a label to the left (the title text)
-        JLabel titleLabel = new JLabel("Title Panel");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        titlePanel.add(titleLabel, BorderLayout.WEST);
+        // create a new button
+        b = new JButton("submit");
 
-        // Create a button and add it to the right
-        JButton rightButton = new JButton("Action");
-        titlePanel.add(rightButton, BorderLayout.EAST);
+        // create an object of the text class
+        text te = new text();
 
-        // Add the title panel to the top of the content pane
-        frame.add(titlePanel, BorderLayout.NORTH);
+        // addActionListener to button
+        b.addActionListener(te);
 
-        // Add some content to the center for demonstration
-        frame.add(new JLabel("Main Content Area", SwingConstants.CENTER), BorderLayout.CENTER);
+        // create an object of JTextField with 16 columns and a given initial text
+        t = new JTextField("enter the text", 16);
 
-        // Make the frame visible
-        frame.setVisible(true);
+        // create a panel to add buttons and textfield
+        JPanel p = new JPanel();
+
+        // add buttons and textfield to panel
+        p.add(t);
+        p.add(b);
+        p.add(l);
+
+        // add panel to frame
+        f.add(p);
+
+        // set the size of frame
+        f.setSize(300, 300);
+
+        // set frame visibility
+        f.setVisible(true);
+    }
+
+    // if the button is pressed
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand();
+        if (s.equals("submit")) {
+            // set the text of the label to the text of the field
+            l.setText(t.getText());
+
+            // set the text of field to blank
+            t.setText(" ");
+        }
     }
 }
