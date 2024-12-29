@@ -16,6 +16,7 @@ public class Hangman
         frame.getContentPane().removeAll();
 
         JTextField hostInput = new JTextField();
+        hostInput.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
         
         JLabel inputGuide = new JLabel();
         inputGuide.setText("Enter the word to guess:");
