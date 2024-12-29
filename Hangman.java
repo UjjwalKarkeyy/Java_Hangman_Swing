@@ -7,34 +7,43 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 public class Hangman 
 {
     public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel)
     {
         frame.getContentPane().removeAll();
+
         JTextField hostInput = new JTextField();
-        hostInput.setPreferredSize(new Dimension(150,30));
-
+        
+        JLabel inputGuide = new JLabel();
+        inputGuide.setText("Enter the word to guess:");
+        inputGuide.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+        inputGuide.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        inputPanel.add(hostInput);
-
+        inputPanel.setPreferredSize(new Dimension(50,100));
+        inputPanel.setLayout(new BorderLayout());
+        inputPanel.add(inputGuide, BorderLayout.NORTH);
+        inputPanel.add(hostInput, BorderLayout.CENTER);
+        inputPanel.add(buttonPanel, BorderLayout.SOUTH);
+        
         JPanel newPanel = new JPanel();
         newPanel.setLayout(new BorderLayout());
+        
+        newPanel.add(inputPanel); 
+        newPanel.setBorder(new EmptyBorder(120,200,350,200));   
+        newPanel.setPreferredSize(new Dimension(50,100));
 
-        newPanel.add(inputPanel, BorderLayout.NORTH);    
-
-        newPanel.add(buttonPanel, BorderLayout.SOUTH);
         frame.add(titlePanel, BorderLayout.NORTH);
         frame.add(newPanel, BorderLayout.CENTER);
 
-
-        // Refreshing the frame
+        // Refresh the frame
         frame.revalidate();
         frame.repaint();
-    }
-
+    }   
+    
     public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel, JPanel main)
     {
         frame.getContentPane().removeAll();
