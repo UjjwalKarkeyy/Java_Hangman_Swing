@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Hangman 
 {
-    public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel)
+    public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel, int mode)
     {
         frame.getContentPane().removeAll();
 
@@ -19,7 +19,15 @@ public class Hangman
         hostInput.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
         
         JLabel inputGuide = new JLabel();
-        inputGuide.setText("Enter the word to guess:");
+        if(mode == 0)
+        {
+            inputGuide.setText("Enter the word to guess:");
+        }
+        
+        else
+        {
+            inputGuide.setText("Enter your guess:");
+        }
         inputGuide.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         inputGuide.setAlignmentX(Component.CENTER_ALIGNMENT);
         
@@ -61,6 +69,10 @@ public class Hangman
 
     public static void main(String[] args) 
     {
+
+        // This mode is for telling the new panel whether the user is going to enter the guess, or a word. 0 -> Enter word. 1 -> Enter guess
+        int mode = 0;
+
         // Creating Hangman class object
         Hangman h1 = new Hangman();
 
@@ -309,14 +321,14 @@ public class Hangman
         PlayButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                h1.CreateNewPanel(frame, titlePanel, buttonPlayPanel);
+                h1.CreateNewPanel(frame, titlePanel, buttonPlayPanel, 1);
             }
         });
 
         HostButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                h1.CreateNewPanel(frame, titlePanel, buttonHostPanel);
+                h1.CreateNewPanel(frame, titlePanel, buttonHostPanel, 0);
             }
         });
 
@@ -337,17 +349,17 @@ public class Hangman
 
         Next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                h1.CreateNewPanel(frame, titlePanel, buttonHostNextGamePanel);
+                h1.CreateNewPanel(frame, titlePanel, buttonHostNextGamePanel, 1);
         }});
 
         NewGame1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                h1.CreateNewPanel(frame, titlePanel, buttonPlayPanel);
+                h1.CreateNewPanel(frame, titlePanel, buttonPlayPanel, 1);
         }});
 
         NewGame2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                h1.CreateNewPanel(frame, titlePanel, buttonHostPanel);
+                h1.CreateNewPanel(frame, titlePanel, buttonHostPanel, 0);
         }});
 
         frame.setVisible(true);
