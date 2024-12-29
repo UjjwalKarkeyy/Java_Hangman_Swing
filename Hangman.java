@@ -11,11 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 public class Hangman 
 {
-    public void CreateNewPanel(JFrame frame, JPanel titlePanel, JPanel buttonPanel, int mode)
+    public void CreateNewPanel(JTextField hostInput, JFrame frame, JPanel titlePanel, JPanel buttonPanel, int mode)
     {
         frame.getContentPane().removeAll();
-
-        JTextField hostInput = new JTextField();
         hostInput.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
         
         JLabel inputGuide = new JLabel();
@@ -28,6 +26,7 @@ public class Hangman
         {
             inputGuide.setText("Enter your guess:");
         }
+
         inputGuide.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         inputGuide.setAlignmentX(Component.CENTER_ALIGNMENT);
         
@@ -97,6 +96,11 @@ public class Hangman
         JLabel titleLabel = new JLabel(titleText);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         titlePanel.add(titleLabel, BorderLayout.WEST);
+
+        /*
+            CREATING HOST INPUT TEXTFIELD 
+        */
+        JTextField hostInput = new JTextField();
 
         /*
             IMAGES ARE LOADED HERE 
@@ -314,14 +318,14 @@ public class Hangman
         PlayButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                h1.CreateNewPanel(frame, titlePanel, buttonPlayPanel, 1);
+                h1.CreateNewPanel(hostInput, frame, titlePanel, buttonPlayPanel, 1);
             }
         });
 
         HostButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                h1.CreateNewPanel(frame, titlePanel, buttonHostPanel, 0);
+                h1.CreateNewPanel(hostInput, frame, titlePanel, buttonHostPanel, 0);
             }
         });
 
@@ -342,17 +346,21 @@ public class Hangman
 
         Next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                h1.CreateNewPanel(frame, titlePanel, buttonHostNextGamePanel, 1);
-        }});
+                h1.CreateNewPanel(hostInput, frame, titlePanel, buttonHostNextGamePanel, 1);
+                String host_input = hostInput.getText();
+                System.out.println("Host Input is: " + host_input);
+            }
+
+        });
 
         NewGame1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                h1.CreateNewPanel(frame, titlePanel, buttonPlayPanel, 1);
+                h1.CreateNewPanel(hostInput, frame, titlePanel, buttonPlayPanel, 1);
         }});
 
         NewGame2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                h1.CreateNewPanel(frame, titlePanel, buttonHostPanel, 0);
+                h1.CreateNewPanel(hostInput, frame, titlePanel, buttonHostPanel, 0);
         }});
 
         frame.setVisible(true);
