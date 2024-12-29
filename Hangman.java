@@ -258,13 +258,6 @@ public class Hangman
             notePanel.add(host_note_label);
 
         /*
-            INPUT STARTS HERE 
-        */
-
-        
-
-
-        /*
             ADDING EVENT LISTENER FOR MINIMIZING AND CLOSING SCREEN 
         */
 
